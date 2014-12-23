@@ -30,28 +30,76 @@ namespace Graphs
             _vertices = new Dictionary<string, Vertex>();
             _edges = new List<Edge>();
         }
+#endregion
+        /// <summary>
+        /// Adds a new Vertex with the specified name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public bool AddNewVertex(string n)
+        {
+            return AddNewVertex(new Vertex(n));
+        }
 
         /// <summary>
-        /// Creates a graph with the specified edges and vertices
+        /// Adds the specified Vertex to the Graph.
         /// </summary>
-        /// <param name="vertices"></param>
-        /// <param name="edges"></param>
-        public Graph(List<Vertex> vs, List<Edge> e)
+        /// <param name="vertex"></param>
+        /// <returns></returns>
+        public bool AddNewVertex(Vertex v)
         {
-            //add all vertices to _vertices
-            _vertices = new Dictionary<string, Vertex>();
-            foreach(Vertex v in vs)
+            if (!_vertices.ContainsKey(v.Name))
             {
                 _vertices.Add(v.Name, v);
+                return true;
             }
-
-            _edges = e;
+            return false;
         }
-#endregion
 
-        public void AddNewVertex(string n)
+        /// <summary>
+        /// Adds a new Edge between the two vertices defined by the strings.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public bool AddNewEdge(string a, string b)
         {
+            return AddNewEdge(new Pair<string>(a, b));
+        }
 
+        /// <summary>
+        /// Adds a new Edge between the two vertices defined by the string-pair.
+        /// </summary>
+        /// <param name="stringpair"></param>
+        /// <returns></returns>
+        public bool AddNewEdge(Pair<string> p)
+        {
+            Edge newEdge = new Edge(p);
+
+            if (!_edges.Contains(newEdge))
+            {
+                if (!_vertices.ContainsKey(p.First))
+                {
+                    AddNewVertex(p.First);
+                }
+                if (!_vertices.ContainsKey(p.Last))
+                {
+                    AddNewVertex(p.Last);
+                }
+                _edges.Add(newEdge);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Adds the specified Edge to the Graph.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public bool AddNewEdge(Edge e)
+        {
+            return true;
         }
     }
 }

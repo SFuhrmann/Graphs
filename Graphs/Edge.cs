@@ -26,5 +26,9 @@ namespace Graphs
         {
             _vertices = new Pair<Vertex>(a, b);
         }
+        public Edge(Pair<string> p)
+        {
+            _vertices = new Pair<Vertex>(new Vertex(p.First), new Vertex(p.Last));
+        }
     }
 }
