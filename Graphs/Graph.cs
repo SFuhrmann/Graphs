@@ -15,8 +15,8 @@ namespace Graphs
         #region Instance Variables
 
         //vertices should have quick access through usage of a hashmap
-        private Dictionary<string, Vertex> _vertices;
-        private List<Edge> _edges;
+        private Dictionary<Vertex, bool> _vertices;
+        private Dictionary<Edge, bool> _edges;
 
         #endregion
 
@@ -27,8 +27,8 @@ namespace Graphs
         /// </summary>
         public Graph()
         {
-            _vertices = new Dictionary<string, Vertex>();
-            _edges = new List<Edge>();
+            _vertices = new Dictionary<Vertex, bool>();
+            _edges = new Dictionary<Edge, bool>();
         }
 #endregion
         /// <summary>
@@ -48,9 +48,9 @@ namespace Graphs
         /// <returns></returns>
         public bool AddNewVertex(Vertex v)
         {
-            if (!_vertices.ContainsKey(v.Name))
+            if (!_vertices.ContainsKey(v))
             {
-                _vertices.Add(v.Name, v);
+                _vertices.Add(v, true);
                 return true;
             }
             return false;
@@ -76,17 +76,19 @@ namespace Graphs
         {
             Edge newEdge = new Edge(p);
 
-            if (!_edges.Contains(newEdge))
+            if (!_edges.ContainsKey(newEdge))
             {
-                if (!_vertices.ContainsKey(p.First))
+                Vertex firstV = new Vertex(p.First);
+                Vertex lastV = new Vertex(p.Last);
+                if (!_vertices.ContainsKey(firstV))
                 {
-                    AddNewVertex(p.First);
+                    AddNewVertex(firstV);
                 }
-                if (!_vertices.ContainsKey(p.Last))
+                if (!_vertices.ContainsKey(lastV))
                 {
-                    AddNewVertex(p.Last);
+                    AddNewVertex(lastV);
                 }
-                _edges.Add(newEdge);
+                _edges.Add(newEdge, true);
                 return true;
             }
             return false;
