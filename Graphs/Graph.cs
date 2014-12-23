@@ -33,6 +33,7 @@ namespace Graphs
 #endregion
         /// <summary>
         /// Adds a new Vertex with the specified name.
+        /// Returns false when Vertex already existed.
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -43,6 +44,7 @@ namespace Graphs
 
         /// <summary>
         /// Adds the specified Vertex to the Graph.
+        /// Returns false when Vertex already existed.
         /// </summary>
         /// <param name="vertex"></param>
         /// <returns></returns>
@@ -58,6 +60,7 @@ namespace Graphs
 
         /// <summary>
         /// Adds a new Edge between the two vertices defined by the strings.
+        /// Returns false when edge already existed.
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
@@ -69,17 +72,27 @@ namespace Graphs
 
         /// <summary>
         /// Adds a new Edge between the two vertices defined by the string-pair.
+        /// Returns false when edge already existed.
         /// </summary>
         /// <param name="stringpair"></param>
         /// <returns></returns>
         public bool AddNewEdge(Pair<string> p)
         {
-            Edge newEdge = new Edge(p);
+            return AddNewEdge(new Edge(p));
+        }
 
+        /// <summary>
+        /// Adds the specified Edge to the Graph.
+        /// Returns false when edge already existed.
+        /// </summary>
+        /// <param name="edge"></param>
+        /// <returns></returns>
+        public bool AddNewEdge(Edge newEdge)
+        {
             if (!_edges.ContainsKey(newEdge))
             {
-                Vertex firstV = new Vertex(p.First);
-                Vertex lastV = new Vertex(p.Last);
+                Vertex firstV = newEdge.Vertices.First;
+                Vertex lastV = newEdge.Vertices.Last;
                 if (!_vertices.ContainsKey(firstV))
                 {
                     AddNewVertex(firstV);
@@ -95,12 +108,39 @@ namespace Graphs
         }
 
         /// <summary>
-        /// Adds the specified Edge to the Graph.
+        /// Removes the defined Edge from the Graph.
+        /// Returns false when the Edge did not exist.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="edge"></param>
         /// <returns></returns>
-        public bool AddNewEdge(Edge e)
+        public bool RemoveEdge(Edge edge)
         {
+            if (_edges.ContainsKey(edge))
+            {
+                _edges.Remove(edge);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Removes the defined Vertex and all Edges containing it from the Graph.
+        /// Returns false when the Vertex did not exist.
+        /// </summary>
+        /// <param name="vertex"></param>
+        /// <returns></returns>
+        public bool RemoveVertex(Vertex vertex)
+        {
+            if (!_vertices.ContainsKey(vertex))
+            {
+                return false;
+            }
+            foreach(Edge edge in _edges.Keys)
+            {
+                if (edge.Vertices.Contains(vertex))
+                    _edges.Remove(edge);
+            }
+            _vertices.Remove(vertex);
             return true;
         }
     }

@@ -25,5 +25,22 @@ namespace Graphs
         {
             _name = name;
         }
+
+        public override string ToString()
+        {
+            return _name;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Vertex))
+                return false;
+            return ((Vertex)obj).Name == _name;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

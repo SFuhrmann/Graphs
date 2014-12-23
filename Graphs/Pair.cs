@@ -40,5 +40,17 @@ namespace Graphs
             _last = last;
         }
         public Pair();
+
+        /// <summary>
+        /// Returns true when the pair contains the defined item.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public bool Contains(T item)
+        {
+            if (item.Equals(_first)) return true;
+            if (item.Equals(_last)) return true;
+            return false;
+        }
     }
 }
