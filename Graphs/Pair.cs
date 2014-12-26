@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Graphs
 {
-    class Pair<T> : IDisposable
+    class Pair<T>
     {
         private T _first;
         private T _last;
@@ -39,7 +39,8 @@ namespace Graphs
             _first = first;
             _last = last;
         }
-        public Pair();
+        public Pair()
+        {}
 
         /// <summary>
         /// Returns true when the pair contains the defined item.

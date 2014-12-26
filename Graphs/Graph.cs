@@ -9,7 +9,7 @@ namespace Graphs
     /// <summary>
     /// A class that handles all algorithms and data structures needed when using graphs.
     /// </summary>
-    class Graph : IDisposable
+    class Graph
     {
 
         #region Instance Variables

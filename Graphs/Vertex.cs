@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Graphs
 {
-    class Vertex : IDisposable
+    class Vertex
     {
         private string _name;
         public string Name
@@ -26,6 +26,7 @@ namespace Graphs
             _name = name;
         }
 
+        #region Overrides
         public override string ToString()
         {
             return _name;
@@ -40,7 +41,8 @@ namespace Graphs
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return _name.GetHashCode();
         }
+        #endregion
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Graphs
 {
-    class Edge : IDisposable
+    class Edge
     {
         private Pair<Vertex> _vertices;
 
@@ -30,5 +30,26 @@ namespace Graphs
         {
             _vertices = new Pair<Vertex>(new Vertex(p.First), new Vertex(p.Last));
         }
+
+        #region Overrides
+        public override string ToString()
+        {
+            return _vertices.First + " - " + _vertices.Last;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if(!(obj is Edge))
+            {
+                return false;
+            }
+            return (_vertices.First.Equals(obj) && _vertices.Last.Equals(obj));
+        }
+
+        public override int GetHashCode()
+        {
+            return _vertices.First.GetHashCode() * 23 + _vertices.Last.GetHashCode();
+        }
+        #endregion
     }
 }
