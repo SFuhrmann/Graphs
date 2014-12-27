@@ -53,5 +53,18 @@ namespace Graphs
             if (item.Equals(_last)) return true;
             return false;
         }
+
+        /// <summary>
+        /// Returns the other item of the Pair. If the Pair does not contain the item it returns the default value of the Class of this Pair.
+        /// You may want to make sure the Pair contains the item by using Pair.Contains().
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public T GetOther(T item)
+        {
+            if (item.Equals(_first)) return _last;
+            if (item.Equals(_last)) return _first;
+            return default(T);
+        }
     }
 }

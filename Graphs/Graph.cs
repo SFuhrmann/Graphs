@@ -18,6 +18,21 @@ namespace Graphs
         private Dictionary<Vertex, bool> _vertices;
         private Dictionary<Edge, bool> _edges;
 
+        public Vertex[] Vertices
+        {
+            get
+            {
+                return _vertices.Keys.ToArray<Vertex>();
+            }
+        }
+        public Edge[] Edges
+        {
+            get
+            {
+                return _edges.Keys.ToArray<Edge>();
+            }
+        }
+
         #endregion
 
 
