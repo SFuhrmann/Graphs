@@ -30,7 +30,72 @@ namespace Graphs
             _vertices = new Dictionary<Vertex, bool>();
             _edges = new Dictionary<Edge, bool>();
         }
-#endregion
+
+        public Graph(Vertex[] vertices, Edge[] edges)
+        {
+            _vertices = new Dictionary<Vertex, bool>();
+            _edges = new Dictionary<Edge, bool>();
+
+            foreach(Vertex v in vertices)
+            {
+                _vertices.Add(v, true);
+            }
+            foreach (Edge e in edges)
+            {
+                _edges.Add(e, true);
+            }
+        }
+
+        public Graph(string[] vertices, Edge[] edges)
+        {
+            _vertices = new Dictionary<Vertex, bool>();
+            _edges = new Dictionary<Edge, bool>();
+
+            foreach(string v in vertices)
+            {
+                _vertices.Add(new Vertex(v), true);
+            }
+            foreach(Edge e in edges)
+            {
+                _edges.Add(e, true);
+            }
+        }
+
+        public Graph(Vertex[] vertices, Pair<string>[] edges)
+        {
+            _vertices = new Dictionary<Vertex, bool>();
+            _edges = new Dictionary<Edge, bool>();
+
+            foreach(Vertex v in vertices)
+            {
+                _vertices.Add(v, true);
+            }
+            foreach(Pair<string> e in edges)
+            {
+                _edges.Add(new Edge(e), true);
+            }
+        }
+
+        public Graph(string[] vertices, Pair<string>[] edges)
+        {
+            _vertices = new Dictionary<Vertex, bool>();
+            _edges = new Dictionary<Edge, bool>();
+
+            foreach (string v in vertices)
+            {
+                _vertices.Add(new Vertex(v), true);
+            }
+            foreach (Pair<string> e in edges)
+            {
+                _edges.Add(new Edge(e), true);
+            }
+        }
+
+        #endregion
+
+
+        #region Add/Remove-Methods
+
         /// <summary>
         /// Adds a new Vertex with the specified name.
         /// Returns false when Vertex already existed.
@@ -143,5 +208,7 @@ namespace Graphs
             _vertices.Remove(vertex);
             return true;
         }
+
+        #endregion
     }
 }
