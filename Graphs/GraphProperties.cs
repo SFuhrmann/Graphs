@@ -14,6 +14,37 @@ namespace Graphs
         }
 
         /// <summary>
+        /// Returns true when the given Graph is Complete.
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <returns></returns>
+        public static bool IsGraphComplete(Graph g)
+        {
+            Vertex[] vertices = g.Vertices;
+
+            foreach(Vertex v in vertices)
+            {
+                List<Vertex> neighbors = GraphHelper.FindAdjacentVertices(g, v).ToList<Vertex>();
+                neighbors.Add(v);
+
+                if(! vertices.All((x) => { return neighbors.Contains(x); }))
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Returns true when the given Graph is complete. Calculates this asynchronously.
+        /// </summary>
+        /// <param name="g"></param>
+        /// <returns></returns>
+        public async static Task<bool> IsGraphCompleteAsync(Graph g)
+        {
+            return await Task.Run(() => { return IsGraphComplete(g); });
+        }
+
+        /// <summary>
         /// Returns true when the given Graph is bipartite.
         /// </summary>
         /// <param name="graph"></param>
