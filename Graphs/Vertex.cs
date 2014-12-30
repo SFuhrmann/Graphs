@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Graphs
 {
+    /// <summary>
+    /// Represents a single vertex inside a graph.
+    /// </summary>
     class Vertex
     {
         private string _name;

@@ -6,11 +6,22 @@ using System.Threading.Tasks;
 
 namespace Graphs
 {
+    /// <summary>
+    /// Holds several static Methods that determine specific properties of a Graph.
+    /// </summary>
     static class GraphProperties
     {
+        /// <summary>
+        /// Returns true when the given Vertex is reachable from the start Vertex inside the Graph.
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="start"></param>
+        /// <param name="goal"></param>
+        /// <returns></returns>
         public static bool IsVertexReachableFrom(Graph g, Vertex start, Vertex goal)
         {
-            return true;
+            if (DijkstraSearch.Search(g, start, goal) != null) return true;
+            else return false;
         }
 
         /// <summary>

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Graphs
 {
+    /// <summary>
+    /// Represents a single edge between two vertices inside a graph.
+    /// </summary>
     class Edge
     {
         private Pair<Vertex> _vertices;
