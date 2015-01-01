@@ -69,7 +69,7 @@
                     <Button Grid.Column="1" Margin="12" Content="Search Path" Click="SearchButton_ClickAsync" Name="SearchButton"/>
                 </Grid>
                 <Label Grid.Row="2" Grid.Column="0" Content="Path:" />
-                <Label Content="Dijkstra Path Search Algorithm:" Grid.ColumnSpan="2" Foreground="Gray" />
+                <Label Content="Dijkstra Path Search Algorithm:" Grid.ColumnSpan="2" FontWeight="SemiBold" />
                 <Label Grid.Row="2" Grid.Column="1" Name="DijkstraPathLabel" />
             </Grid>
         </Grid>
