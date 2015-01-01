@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Graphs
 {
-    class Pair<T>
+    public class Pair<T>
     {
         private T _first;
         private T _last;

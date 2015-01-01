@@ -1,0 +1,78 @@
+﻿<Window x:Class="GraphsSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Graphs Sample" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="CreateButton" Grid.Column="2" Margin="12" Content="Create Graph" Click="CreateButton_ClickAsync"/>
+            <TextBox Name="GraphEdgesTextBox" Grid.Column="1" Margin="0 12" TextChanged="GraphEdgesTextBox_TextChanged" KeyDown="GraphEdgesTextBox_KeyDown"/>
+            <Label Name="GraphEdgesSampleLabel" Grid.Column="1" Margin="2 12" Content="(A,B)(A,C)(B,C) ..." Foreground="Gray" FontStyle="Italic" IsHitTestVisible="False" />
+            <Label Grid.Column="0" Margin="0 12 0 12" Content="Edges:" />
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Name="IsGraphCompleteLabel" />
+                <Label Grid.Row="1" Name="IsGraphBipartiteLabel" />
+                <Label Grid.Row="2" Name="IsGraphConnectedLabel" />
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Start:" />
+                    <Label Grid.Row="1" Content="Goal:" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0" Name="StartVertexTextBox" />
+                        <TextBox Grid.Row="1" Name="GoalVertexTextBox" />
+                    </Grid>
+                    <Button Grid.Column="1" Margin="12" Content="Search Path" Click="SearchButton_ClickAsync" Name="SearchButton"/>
+                </Grid>
+                <Label Grid.Row="2" Grid.Column="0" Content="Path:" />
+                <Label Content="Dijkstra Path Search Algorithm:" Grid.ColumnSpan="2" Foreground="Gray" />
+                <Label Grid.Row="2" Grid.Column="1" Name="DijkstraPathLabel" />
+            </Grid>
+        </Grid>
+        <Label Grid.Row="1" Name="ShowGraphEdgesLabel" Foreground="Gray"/>
+    </Grid>
+</Window>

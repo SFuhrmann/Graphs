@@ -9,7 +9,7 @@ namespace Graphs
     /// <summary>
     /// Holds several static Methods that determine specific properties of a Graph.
     /// </summary>
-    static class GraphProperties
+    public static class GraphProperties
     {
         /// <summary>
         /// Returns true when the given Vertex is reachable from the start Vertex inside the Graph.
@@ -22,6 +22,18 @@ namespace Graphs
         {
             if (DijkstraSearch.Search(g, start, goal) != null) return true;
             else return false;
+        }
+
+        /// <summary>
+        /// Returns true when the given Vertex is reachable from the start Vertex inside the Graph. Calculates asynchronously.
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="start"></param>
+        /// <param name="goal"></param>
+        /// <returns></returns>
+        public async static Task<bool> IsVertexReachableFromAsync(Graph g, Vertex start, Vertex goal)
+        {
+            return await Task.Run(() => { return IsVertexReachableFrom(g, start, goal); });
         }
 
         /// <summary>
@@ -116,6 +128,27 @@ namespace Graphs
         public async static Task<bool> IsGraphBipartiteAsync(Graph g)
         {
             return await Task.Run(() => { return IsGraphBipartite(g); });
+        }
+
+        /// <summary>
+        /// Returns true when there is at least one path from each Vertex inside the Graph to every other Vertex.
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <returns></returns>
+        public static bool IsGraphConnected(Graph g)
+        {
+            int c = DijkstraSearch.CountReachableNodes(g, g.Vertices[0]);
+            return c == g.Vertices.Length;
+        }
+
+        /// <summary>
+        /// Returns true when there is at least one path from each Vertex inside the Graph to every other Vertex. Calculates asynchronously.
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <returns></returns>
+        public async static Task<bool> IsGraphConnectedAsync(Graph g)
+        {
+            return await Task.Run(() => { return IsGraphConnected(g); });
         }
     }
 }

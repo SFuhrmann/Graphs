@@ -9,7 +9,7 @@ namespace Graphs
     /// <summary>
     /// A class that handles all algorithms and data structures needed when using graphs.
     /// </summary>
-    class Graph
+    public class Graph
     {
 
         #region Instance Variables
@@ -53,11 +53,11 @@ namespace Graphs
 
             foreach(Vertex v in vertices)
             {
-                _vertices.Add(v, true);
+                AddNewVertex(v);
             }
             foreach (Edge e in edges)
             {
-                _edges.Add(e, true);
+                AddNewEdge(e);
             }
         }
 
@@ -68,11 +68,11 @@ namespace Graphs
 
             foreach(string v in vertices)
             {
-                _vertices.Add(new Vertex(v), true);
+                AddNewVertex(v);
             }
             foreach(Edge e in edges)
             {
-                _edges.Add(e, true);
+                AddNewEdge(e);
             }
         }
 
@@ -83,11 +83,11 @@ namespace Graphs
 
             foreach(Vertex v in vertices)
             {
-                _vertices.Add(v, true);
+                AddNewVertex(v);
             }
             foreach(Pair<string> e in edges)
             {
-                _edges.Add(new Edge(e), true);
+                AddNewEdge(e);
             }
         }
 
@@ -98,11 +98,11 @@ namespace Graphs
 
             foreach (string v in vertices)
             {
-                _vertices.Add(new Vertex(v), true);
+                AddNewVertex(v);
             }
             foreach (Pair<string> e in edges)
             {
-                _edges.Add(new Edge(e), true);
+                AddNewEdge(e);
             }
         }
 

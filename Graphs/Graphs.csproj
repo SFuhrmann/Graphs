@@ -45,6 +45,7 @@
     <Compile Include="GraphHelper.cs" />
     <Compile Include="GraphProperties.cs" />
     <Compile Include="Pair.cs" />
+    <Compile Include="PriorityQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vertex.cs" />
   </ItemGroup>

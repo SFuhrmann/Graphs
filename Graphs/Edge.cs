@@ -9,7 +9,7 @@ namespace Graphs
     /// <summary>
     /// Represents a single edge between two vertices inside a graph.
     /// </summary>
-    class Edge
+    public class Edge
     {
         private Pair<Vertex> _vertices;
 

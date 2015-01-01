@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace Graphs
 {
-    class PriorityQueue<T>
+    public class PriorityQueue<T>
     {
         Dictionary<T, int> _priority;
         List<T> _queue;
+
+        public PriorityQueue()
+        {
+            _priority = new Dictionary<T, int>();
+            _queue = new List<T>();
+        }
 
         public int Count
         {
@@ -26,25 +32,32 @@ namespace Graphs
         /// <param name="priority"></param>
         public void Insert(T t, int i)
         {
-            bool positioned = false;
-            int k = 0;
-
-            while(!positioned)
+            if (_queue.Count == 0)
             {
-                T next = _queue[k];
+                _queue.Insert(0, t);
+            }
+            else
+            {
+                bool positioned = false;
+                int k = 0;
 
-                if (_priority[next] > i)
+                while (!positioned)
                 {
-                    _queue.Insert(k, t);
-                    positioned = true;
-                }
+                    T next = _queue[k];
 
-                k++;
+                    if (_priority[next] > i)
+                    {
+                        _queue.Insert(k, t);
+                        positioned = true;
+                    }
 
-                if(k > _queue.Count)
-                {
-                    _queue.Add(t);
-                    positioned = true;
+                    k++;
+
+                    if (k > _queue.Count - 1)
+                    {
+                        _queue.Add(t);
+                        positioned = true;
+                    }
                 }
             }
             _priority.Add(t, i);

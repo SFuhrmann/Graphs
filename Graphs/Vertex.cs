@@ -9,7 +9,7 @@ namespace Graphs
     /// <summary>
     /// Represents a single vertex inside a graph.
     /// </summary>
-    class Vertex
+    public class Vertex
     {
         private string _name;
         public string Name

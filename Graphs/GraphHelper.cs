@@ -9,7 +9,7 @@ namespace Graphs
     /// <summary>
     /// Holds several static Methods that may help when using Graphs.
     /// </summary>
-    static class GraphHelper
+    public static class GraphHelper
     {
 
         #region FindAdjacent
